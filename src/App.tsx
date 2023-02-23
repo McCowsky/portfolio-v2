@@ -15,7 +15,6 @@ const App: React.FC = () => {
       <Navbar />
       <div className="relative top-24 overflow-y-auto overscroll-y-contain snap-y snap-mandatory h-[calc(100vh-96px)] w-full text-white">
         <Hero />
-        <Hero2 />
         <Skills />
       </div>
     </div>
