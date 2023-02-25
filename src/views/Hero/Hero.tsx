@@ -35,11 +35,15 @@ const Hero: React.FC = () => {
             <div className="pt-10">
               <h3 className="text-2xl">Follow Me:</h3>
               <div className="flex gap-5 pt-6">
-                <div className="border rounded-full w-20 h-20 flex justify-center items-center ">
-                  <FiGithub className="text-[42px]" />
+                <div className="border rounded-full w-20 h-20">
+                  <a href="" className="flex justify-center items-center w-full h-full ">
+                    <FiGithub className="text-[42px]" />
+                  </a>
                 </div>
                 <div className="border rounded-full w-20 h-20 flex justify-center items-center">
-                  <FiLinkedin className="text-5xl" />
+                  <a href="" className="flex justify-center items-center w-full h-full ">
+                    <FiLinkedin className="text-5xl" />
+                  </a>
                 </div>
               </div>
             </div>
