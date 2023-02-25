@@ -1,24 +1,37 @@
-import { useRef } from "react";
+import { MutableRefObject, useRef } from "react";
 import Hero from "./views/Hero/Hero";
-import Hero2 from "./views/Hero2/Hero2";
 import Navbar from "./components/Navbar/Navbar";
 import Skills from "./views/Skills/Skills";
-import Projects from "./views/Projects/Projects";
 import ProjectsWrapper from "./views/Projects/ProjectsWrapper";
 useRef;
 const App: React.FC = () => {
-  const heroSection = useRef();
-
-  const scrollTo = (section: any) => {
+  const section1: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
+    null
+  );
+  const section2: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
+    null
+  );
+  const section3: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
+    null
+  );
+  function scrollTo(section: any) {
     section.current.scrollIntoView({ behavior: "smooth" });
-  };
+  }
   return (
     <div className="App">
       <Navbar />
-      <div className="relative top-24 overflow-y-auto overscroll-y-contain snap-y snap-mandatory h-[calc(100vh-96px)] w-full text-white">
-        <Hero />
-        <Skills />
-        <ProjectsWrapper />
+      <div className="relative top-24 overflow-y-auto overscroll-y-contain snap-y snap-mandatory h-[calc(100vh-96px)] w-full text-white dark:text-[#858591]">
+        <div ref={section1}>
+          <Hero goToSectionRef={section2} scrollTo={scrollTo} />
+        </div>
+        <div ref={section2}>
+          <Skills goToSectionRef={section3} scrollTo={scrollTo} />
+          {/* scrollTo={scrollTo} goToSectionRef={projectsSection} */}
+        </div>
+        <div ref={section3}>
+          <ProjectsWrapper />
+          {/* scrollTo={scrollTo} */}
+        </div>
       </div>
     </div>
   );

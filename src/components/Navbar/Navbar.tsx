@@ -1,7 +1,7 @@
 import { SlArrowDownCircle } from "react-icons/Sl";
 import { Menu, Transition } from "@headlessui/react";
 import { Switch } from "@headlessui/react";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import ThemeContext from "../../context/ThemeContext";
 
 const Navbar: React.FC = () => {
@@ -12,9 +12,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className="h-24 w-full fixed bg-[#0D002B] dark:bg-gray-300 z-10">
+    <div className="h-24 w-full fixed bg-[#0D002B] dark:bg-white z-10 shadow-lg">
       <div className="h-24 w-[1920px] my-0 mx-auto px-10">
-        <div className="flex items-center justify-end  h-full  text-white text-lg font-roboto font-medium">
+        <div className="flex items-center justify-end  h-full  text-white dark:text-[#393939] text-lg font-roboto font-medium">
           <h4 className="mr-auto text-3xl text-orange-400">MM</h4>
           <div className="flex">
             <ul className="flex gap-10 justify-center items-center">
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
                   </Transition>
                 </Menu>
               </li>
-              <a href="" className="bg-orange-400 py-3 px-7">
+              <a href="" className="bg-orange-400 py-3 px-7 dark:text-white">
                 Hire Me!
               </a>
               <Switch

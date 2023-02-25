@@ -3,23 +3,28 @@ import Typewriter from "typewriter-effect";
 import { FiLinkedin } from "react-icons/Fi";
 import { FiGithub } from "react-icons/Fi";
 import { TiArrowRightOutline } from "react-icons/Ti";
+import { SlArrowDownCircle } from "react-icons/Sl";
+import { AiOutlineArrowDown } from "react-icons/Ai";
 
-const Hero: React.FC = () => {
+const Hero: React.FC<{ scrollTo: any; goToSectionRef: any }> = ({
+  scrollTo,
+  goToSectionRef,
+}) => {
   return (
-    <div className="w-full h-[calc(100vh-96px)] snap-center	 bg-[#130538]">
-      <div className="h-auto w-[1920px] my-0 mx-auto px-10 ">
-        <div className="h-[100vh] flex justify-between items-start pt-20">
-          <div className="flex flex-col gap-10 pt-40">
+    <div className="w-full h-[calc(100vh-96px)] snap-center	 bg-[#130538] dark:bg-[#F0F1F6]">
+      <div className="relative h-auto w-[1920px] my-0 mx-auto px-10 ">
+        <div className="h-[100vh] flex justify-between items-center">
+          <div className="flex flex-col gap-10">
             <h2 className="uppercase font-roboto text-3xl text-orange-400">
               Frond-End Developer
             </h2>
-            <h1 className="text-6xl font-bold">
+            <h1 className="text-6xl font-bold dark:text-[#F88686]">
               <Typewriter
                 options={{ cursor: "_" }}
                 onInit={(typewriter) => {
                   typewriter
                     .typeString(
-                      " Hi There! <br/> <span className='pb-10'>I'M MATEUSZ MAKOWSKI</span> <br/> <br/> web developer"
+                      " Hi There! <br/> <span className=''>I'M MATEUSZ MAKOWSKI</span> <br/> <br/> web developer"
                     )
                     .start();
                 }}
@@ -52,6 +57,10 @@ const Hero: React.FC = () => {
             <img src={hero} alt="hero image" className="" />
           </div>
         </div>
+        <SlArrowDownCircle
+          className="absolute bottom-44 left-1/2 -translate-x-1/2 text-6xl z-10"
+          onClick={() => scrollTo(goToSectionRef)}
+        />
       </div>
     </div>
   );

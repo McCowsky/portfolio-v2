@@ -1,9 +1,14 @@
 import SkillCard from "./components/SkillCard";
 import IconsData from "./features/iconsUsed";
-const Skills: React.FC = () => {
+import { SlArrowDownCircle } from "react-icons/Sl";
+
+const Skills: React.FC<{ scrollTo: any; goToSectionRef: any }> = ({
+  scrollTo,
+  goToSectionRef,
+}) => {
   return (
     <div className="w-full h-[calc(100vh-96px)] snap-center bg-[#0D002B]">
-      <div className="h-auto w-[1920px] my-0 mx-auto px-10 ">
+      <div className="relative h-auto w-[1920px] my-0 mx-auto px-10 ">
         <div className="flex flex-col justify-center items-center gap-20 h-[calc(100vh-96px)]">
           <div>
             <h3 className="uppercase text-center text-xl text-orange-400">
@@ -18,6 +23,10 @@ const Skills: React.FC = () => {
             })}
           </div>
         </div>
+        <SlArrowDownCircle
+          className="absolute bottom-44 left-1/2 -translate-x-1/2 text-6xl z-10"
+          onClick={() => scrollTo(goToSectionRef)}
+        />
       </div>
     </div>
   );
