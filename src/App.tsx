@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const section3: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
     null
   );
-  function scrollTo(section: any) {
+  function scrollTo(section: MutableRefObject<HTMLDivElement>) {
     section.current.scrollIntoView({ behavior: "smooth" });
   }
   return (
