@@ -4,16 +4,43 @@ import { FiLinkedin } from "react-icons/Fi";
 import { FiGithub } from "react-icons/Fi";
 import { TiArrowRightOutline } from "react-icons/Ti";
 import { SlArrowDownCircle } from "react-icons/Sl";
-import { AiOutlineArrowDown } from "react-icons/Ai";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useEffect, useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero: React.FC<{ scrollTo: any; goToSectionRef: any }> = ({
   scrollTo,
   goToSectionRef,
 }) => {
+  const animationRef = useRef(null);
+  useEffect(() => {
+    gsap.fromTo(
+      animationRef.current,
+      {
+        autoAlpha: 0,
+        y: -40,
+      },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 1,
+        scrollTrigger: {
+          scroller: "#contain",
+          trigger: animationRef.current,
+          start: "top 60%",
+          end: "bottom 0%",
+          toggleActions: "play none restart reveser",
+        },
+      }
+    );
+  }, []);
+
   return (
     <div className="w-full h-[calc(100vh-96px)] snap-center	 bg-[#130538] dark:bg-[#F0F1F6]">
-      <div className="relative h-auto w-[1920px] my-0 mx-auto px-10 ">
-        <div className="h-[100vh] flex justify-between items-center">
+      <div className="relative h-auto w-[1920px] my-0 mx-auto px-10 " ref={animationRef}>
+        <div className="h-[calc(100vh-96px)] flex justify-between items-center">
           <div className="flex flex-col gap-10">
             <h2 className="uppercase font-roboto text-3xl text-orange-400">
               Frond-End Developer
@@ -58,7 +85,7 @@ const Hero: React.FC<{ scrollTo: any; goToSectionRef: any }> = ({
           </div>
         </div>
         <SlArrowDownCircle
-          className="absolute bottom-44 left-1/2 -translate-x-1/2 text-6xl z-10"
+          className="absolute bottom-16 left-1/2 -translate-x-1/2 text-6xl z-10"
           onClick={() => scrollTo(goToSectionRef)}
         />
       </div>
