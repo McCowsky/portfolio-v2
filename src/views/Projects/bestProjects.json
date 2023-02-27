@@ -9,6 +9,26 @@
       "name": "Snake",
       "img": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
       "languages": ["HTML5", "CSS", "JavaScript"]
+    },
+    {
+      "name": "Quizzical",
+      "img": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "languages": ["HTML5", "CSS", "JavaScript"]
+    },
+    {
+      "name": "Minima",
+      "img": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "languages": ["HTML5", "CSS", "JavaScript"]
+    },
+    {
+      "name": "portfolio-v2",
+      "img": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "languages": ["HTML5", "CSS", "JavaScript"]
+    },
+    {
+      "name": "Trello-clone",
+      "img": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+      "languages": ["HTML5", "CSS", "JavaScript"]
     }
   ]
 }
