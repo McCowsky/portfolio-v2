@@ -1,8 +1,8 @@
 import SkillCard from "./components/SkillCard";
 import IconsData from "./features/iconsUsed";
-import { SlArrowDownCircle } from "react-icons/Sl";
 import { MutableRefObject } from "react";
 import GsapAnimation from "../../components/GsapAnimation/GsapAnimation";
+import SectionButton from "../../components/SectionButton/SectionButton";
 
 const Skills: React.FC<{
   scrollTo: (section: MutableRefObject<HTMLDivElement>) => void;
@@ -28,10 +28,7 @@ const Skills: React.FC<{
           </div>
         </GsapAnimation>
 
-        <SlArrowDownCircle
-          className="absolute bottom-16 left-1/2 -translate-x-1/2 text-6xl z-10"
-          onClick={() => scrollTo(goToSectionRef)}
-        />
+        <SectionButton scrollTo={scrollTo} goToSectionRef={goToSectionRef} />
       </div>
     </div>
   );

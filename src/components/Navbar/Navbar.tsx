@@ -42,7 +42,13 @@ const Navbar: React.FC<{
               >
                 My Work
               </li>
-              <li>Resume</li>
+              <li
+                onClick={() => {
+                  scrollTo(goToSectionRefArray[3]);
+                }}
+              >
+                Resume
+              </li>
               <li className="">
                 {/* Contact Me! <SlArrowDownCircle className="text-2xl" /> */}
                 <Menu as="div">

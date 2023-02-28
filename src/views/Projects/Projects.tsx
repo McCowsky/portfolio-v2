@@ -10,10 +10,14 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIosNew } from "react-icons/md";
 import "./swiperStyles.css";
 import GsapAnimation from "../../components/GsapAnimation/GsapAnimation";
+import SectionButton from "../../components/SectionButton/SectionButton";
+import { MutableRefObject } from "react";
 
-const Projects: React.FC<{ projectsData: { [key: string]: any }[] }> = ({
-  projectsData,
-}) => {
+const Projects: React.FC<{
+  projectsData: { [key: string]: any }[];
+  scrollTo: (section: MutableRefObject<HTMLDivElement>) => void;
+  goToSectionRef: any;
+}> = ({ projectsData, scrollTo, goToSectionRef }) => {
   const [swiperRef, setSwiperRef] = useState<SwiperClass>();
   const handlePrevious = useCallback(() => {
     swiperRef?.slidePrev();
@@ -38,7 +42,7 @@ const Projects: React.FC<{ projectsData: { [key: string]: any }[] }> = ({
 
   return (
     <div className="w-full h-[calc(100vh-96px)] snap-center bg-[#0D002B]">
-      <div className="h-auto w-[1920px] my-0 mx-auto px-10 ">
+      <div className="h-auto w-[1920px] my-0 mx-auto px-10 relative">
         <GsapAnimation wrapperElement="div">
           <div className=" h-[calc(100vh-96px)] my-0 mx-auto flex flex-col gap-20 justify-center items-center">
             <div>
@@ -92,6 +96,7 @@ const Projects: React.FC<{ projectsData: { [key: string]: any }[] }> = ({
             </div>
           </div>
         </GsapAnimation>
+        <SectionButton scrollTo={scrollTo} goToSectionRef={goToSectionRef} />
       </div>
     </div>
   );
