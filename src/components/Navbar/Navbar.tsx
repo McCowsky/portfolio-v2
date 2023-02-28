@@ -1,10 +1,13 @@
 import { SlArrowDownCircle } from "react-icons/Sl";
 import { Menu, Transition } from "@headlessui/react";
 import { Switch } from "@headlessui/react";
-import { useContext } from "react";
+import { useContext, MutableRefObject } from "react";
 import ThemeContext from "../../context/ThemeContext";
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<{
+  goToSectionRefArray: any;
+  scrollTo: (section: MutableRefObject<HTMLDivElement>) => void;
+}> = ({ goToSectionRefArray, scrollTo }) => {
   const { currentTheme, changeCurrentTheme } = useContext(ThemeContext);
 
   const handleThemeChange = (): void => {
@@ -18,9 +21,27 @@ const Navbar: React.FC = () => {
           <h4 className="mr-auto text-3xl text-orange-400">MM</h4>
           <div className="flex">
             <ul className="flex gap-10 justify-center items-center">
-              <li>Home</li>
-              <li>Skills</li>
-              <li>My Work</li>
+              <li
+                onClick={() => {
+                  scrollTo(goToSectionRefArray[0]);
+                }}
+              >
+                Home
+              </li>
+              <li
+                onClick={() => {
+                  scrollTo(goToSectionRefArray[1]);
+                }}
+              >
+                Skills
+              </li>
+              <li
+                onClick={() => {
+                  scrollTo(goToSectionRefArray[2]);
+                }}
+              >
+                My Work
+              </li>
               <li>Resume</li>
               <li className="">
                 {/* Contact Me! <SlArrowDownCircle className="text-2xl" /> */}

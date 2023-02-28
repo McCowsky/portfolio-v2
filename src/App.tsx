@@ -19,7 +19,7 @@ const App: React.FC = () => {
   }
   return (
     <div className="App">
-      <Navbar />
+      <Navbar goToSectionRefArray={[section1, section2, section3]} scrollTo={scrollTo} />
       <div
         className="relative top-24 overflow-y-auto overscroll-y-contain snap-y snap-mandatory h-[calc(100vh-96px)] w-full text-white dark:text-[#858591] contain"
         id="contain"
