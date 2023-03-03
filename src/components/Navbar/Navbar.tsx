@@ -16,40 +16,23 @@ const Navbar: React.FC<{
 
   return (
     <div className="h-24 w-full fixed bg-[#0D002B] dark:bg-white z-10 shadow-lg">
-      <div className="h-24 w-[1920px] my-0 mx-auto px-10">
-        <div className="flex items-center justify-end  h-full  text-white dark:text-[#393939] text-lg font-roboto font-medium">
-          <h4 className="mr-auto text-3xl text-orange-400">MM</h4>
+      <div className="h-24 w-[1920px] xl:w-[1440px] my-0 mx-auto px-10">
+        <div className="flex items-center justify-end  h-full  text-white dark:text-[#393939] text-lg font-oswald font-medium">
+          <h4 className="mr-auto text-3xl text-mainOrange">MM</h4>
           <div className="flex">
             <ul className="flex gap-10 justify-center items-center">
-              <li
-                onClick={() => {
-                  scrollTo(goToSectionRefArray[0]);
-                }}
-              >
-                Home
-              </li>
-              <li
-                onClick={() => {
-                  scrollTo(goToSectionRefArray[1]);
-                }}
-              >
-                Skills
-              </li>
-              <li
-                onClick={() => {
-                  scrollTo(goToSectionRefArray[2]);
-                }}
-              >
-                My Work
-              </li>
-              <li
-                onClick={() => {
-                  scrollTo(goToSectionRefArray[3]);
-                }}
-              >
-                Resume
-              </li>
-              <li className="">
+              {["Home", "Skills", "My work", "Resume"].map((title, index) => (
+                <li
+                  className="hover:text-mainOrange flex h-full items-center cursor-pointer"
+                  onClick={() => {
+                    scrollTo(goToSectionRefArray[index]);
+                  }}
+                >
+                  {title}
+                </li>
+              ))}
+
+              <li className="hover:text-mainOrange">
                 {/* Contact Me! <SlArrowDownCircle className="text-2xl" /> */}
                 <Menu as="div">
                   <Menu.Button className="flex justify-center items-center gap-2">
@@ -104,14 +87,14 @@ const Navbar: React.FC<{
                   </Transition>
                 </Menu>
               </li>
-              <a href="" className="bg-orange-400 py-3 px-7 dark:text-white">
+              <a href="" className="bg-mainOrange py-3 px-7 dark:text-white">
                 Hire Me!
               </a>
               <Switch
                 checked={currentTheme === "dark" ? true : false}
                 onChange={handleThemeChange}
                 className={`${
-                  currentTheme === "dark" ? "bg-orange-400" : "bg-gray-200"
+                  currentTheme === "dark" ? "bg-mainOrange" : "bg-gray-200"
                 } relative inline-flex h-6 w-11 items-center rounded-full`}
               >
                 <span className="sr-only">Enable notifications</span>

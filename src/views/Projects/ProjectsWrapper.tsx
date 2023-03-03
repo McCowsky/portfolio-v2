@@ -4,15 +4,20 @@ import { MutableRefObject } from "react";
 
 const ProjectsWrapper: React.FC<{
   scrollTo: (section: MutableRefObject<HTMLDivElement>) => void;
-  goToSectionRef: any;
-}> = ({ scrollTo, goToSectionRef }) => {
+  goToSectionDownRef: MutableRefObject<HTMLDivElement | null>;
+  goToSectionUpRef: MutableRefObject<HTMLDivElement | null>;
+}> = ({ scrollTo, goToSectionDownRef, goToSectionUpRef }) => {
   const { status, error, data, isLoading } = useGetProjects();
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>`Error! ${error.message}`</div>;
   if (data === undefined) return <div> data undefined</div>;
-  //console.log(data);
   return (
-    <Projects projectsData={data} goToSectionRef={goToSectionRef} scrollTo={scrollTo} />
+    <Projects
+      projectsData={data}
+      goToSectionDownRef={goToSectionDownRef}
+      goToSectionUpRef={goToSectionUpRef}
+      scrollTo={scrollTo}
+    />
   );
 };
 

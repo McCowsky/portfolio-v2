@@ -28,22 +28,32 @@ const App: React.FC = () => {
         scrollTo={scrollTo}
       />
       <div
-        className="relative top-24 overflow-y-auto overscroll-y-contain snap-y snap-mandatory h-[calc(100vh-96px)] w-full text-white dark:text-[#858591] contain"
+        className="relative top-24 overflow-y-auto overscroll-y-contain snap-y snap-mandatory h-[calc(100vh-96px)] w-full text-white dark:text-[#858591]  contain "
         id="contain"
       >
         <div ref={section1}>
-          <Hero goToSectionRef={section2} scrollTo={scrollTo} />
+          <Hero goToSectionDownRef={section2} scrollTo={scrollTo} />
         </div>
         <div ref={section2}>
-          <Skills goToSectionRef={section3} scrollTo={scrollTo} />
-          {/* scrollTo={scrollTo} goToSectionRef={projectsSection} */}
+          <Skills
+            goToSectionDownRef={section3}
+            goToSectionUpRef={section1}
+            scrollTo={scrollTo}
+          />
         </div>
         <div ref={section3}>
-          <ProjectsWrapper goToSectionRef={section4} scrollTo={scrollTo} />
-          {/* scrollTo={scrollTo} */}
+          <ProjectsWrapper
+            goToSectionDownRef={section4}
+            goToSectionUpRef={section2}
+            scrollTo={scrollTo}
+          />
         </div>
         <div ref={section4}>
-          <Resume />
+          <Resume
+            scrollTo={scrollTo}
+            goToSectionDownRef={section1}
+            goToSectionUpRef={section3}
+          />
         </div>
       </div>
     </div>

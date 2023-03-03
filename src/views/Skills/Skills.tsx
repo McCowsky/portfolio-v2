@@ -6,20 +6,26 @@ import SectionButton from "../../components/SectionButton/SectionButton";
 
 const Skills: React.FC<{
   scrollTo: (section: MutableRefObject<HTMLDivElement>) => void;
-  goToSectionRef: any;
-}> = ({ scrollTo, goToSectionRef }) => {
+  goToSectionDownRef: MutableRefObject<HTMLDivElement | null>;
+  goToSectionUpRef: MutableRefObject<HTMLDivElement | null>;
+}> = ({ scrollTo, goToSectionDownRef, goToSectionUpRef }) => {
   return (
-    <div className="w-full h-[calc(100vh-96px)] snap-center bg-[#0D002B]">
-      <div className="relative h-auto w-[1920px] my-0 mx-auto px-10 ">
+    <div className="w-full h-[calc(100vh-96px)] snap-center bg-[#0D002B] font-oswald">
+      <div className="relative h-auto w-[1920px] xl:w-[1440px] my-0 mx-auto px-10 ">
+        <SectionButton
+          scrollTo={scrollTo}
+          goToSectionRef={goToSectionUpRef}
+          direction="up"
+        />
         <GsapAnimation wrapperElement="div">
-          <div className="flex flex-col justify-center items-center gap-20 h-[calc(100vh-96px)]">
+          <div className="flex flex-col justify-center items-center gap-20 xl:gap-10 h-[calc(100vh-96px)]">
             <div>
-              <h3 className="uppercase text-center text-xl text-orange-400">
+              <h3 className="uppercase text-center text-xl xl:text-base text-mainOrange">
                 My skills progress so far
               </h3>
-              <h2 className="text-6xl text-center pt-3">My Skills</h2>
+              <h2 className="text-6xl xl:text-4xl text-center pt-3">My Skills</h2>
             </div>
-            <div className="grid justify-center my-0 mx-auto justify-items-center items-center grid-cols-3 w-fit gap-10 flex-wrap">
+            <div className="grid justify-center my-0 mx-auto justify-items-center items-center grid-cols-3 w-fit gap-10 xl:gap-6 flex-wrap">
               {/* <SkillCard name="JavaScript" icon="SiJavascript" /> */}
               {IconsData.map((icon) => {
                 return <SkillCard name={icon.title} icon={icon.icon} key={icon.title} />;
@@ -28,7 +34,11 @@ const Skills: React.FC<{
           </div>
         </GsapAnimation>
 
-        <SectionButton scrollTo={scrollTo} goToSectionRef={goToSectionRef} />
+        <SectionButton
+          scrollTo={scrollTo}
+          goToSectionRef={goToSectionDownRef}
+          direction="down"
+        />
       </div>
     </div>
   );

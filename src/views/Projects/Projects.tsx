@@ -16,8 +16,9 @@ import { MutableRefObject } from "react";
 const Projects: React.FC<{
   projectsData: { [key: string]: any }[];
   scrollTo: (section: MutableRefObject<HTMLDivElement>) => void;
-  goToSectionRef: any;
-}> = ({ projectsData, scrollTo, goToSectionRef }) => {
+  goToSectionDownRef: MutableRefObject<HTMLDivElement | null>;
+  goToSectionUpRef: MutableRefObject<HTMLDivElement | null>;
+}> = ({ projectsData, scrollTo, goToSectionDownRef, goToSectionUpRef }) => {
   const [swiperRef, setSwiperRef] = useState<SwiperClass>();
   const handlePrevious = useCallback(() => {
     swiperRef?.slidePrev();
@@ -41,19 +42,27 @@ const Projects: React.FC<{
   }, []);
 
   return (
-    <div className="w-full h-[calc(100vh-96px)] snap-center bg-[#0D002B]">
-      <div className="h-auto w-[1920px] my-0 mx-auto px-10 relative">
+    <div className="w-full h-[calc(100vh-96px)] snap-center bg-[#0D002B] font-oswald">
+      <div className="h-auto w-[1920px] xl:w-[1440px] my-0 mx-auto px-10 relative">
+        <SectionButton
+          scrollTo={scrollTo}
+          goToSectionRef={goToSectionUpRef}
+          direction="up"
+        />
         <GsapAnimation wrapperElement="div">
-          <div className=" h-[calc(100vh-96px)] my-0 mx-auto flex flex-col gap-20 justify-center items-center">
+          <div className=" h-[calc(100vh-96px)] my-0 mx-auto flex flex-col gap-20 xl:gap-10 justify-center items-center">
             <div>
-              <h3 className="uppercase text-center text-xl text-orange-400">
+              <h3 className="uppercase text-center text-xl xl:text-base text-mainOrange">
                 Check out my recent projects
               </h3>
-              <h2 className=" text-6xl text-center pt-3">Apps I've built</h2>
+              <h2 className=" text-6xl xl:text-4xl text-center pt-3">Apps I've built</h2>
             </div>
-            <div className="flex flex-col justify-center items-center gap-10">
-              <div className="w-[1580px] my-0 mx-auto flex justify-center items-center gap-10">
-                <button onClick={handlePrevious} className="text-7xl">
+            <div className="flex flex-col justify-center items-center gap-10 xl:gap-5">
+              <div className="w-[1580px] xl:w-[1100px] my-0 mx-auto flex justify-center items-center gap-10">
+                <button
+                  onClick={handlePrevious}
+                  className="text-7xl xl:text-5xl hover:text-mainOrange"
+                >
                   <MdArrowBackIosNew />
                 </button>
                 <Swiper
@@ -65,11 +74,18 @@ const Projects: React.FC<{
                   onSwiper={setSwiperRef}
                   virtual
                   mousewheel
-                  width={1433}
                   pagination={{
                     el: ".swiper-custom-pagination",
                     clickable: true,
                     type: "bullets",
+                  }}
+                  breakpoints={{
+                    920: {
+                      width: 955,
+                    },
+                    2000: {
+                      width: 1433,
+                    },
                   }}
                 >
                   {filteredProjects.map(
@@ -88,7 +104,10 @@ const Projects: React.FC<{
                     }
                   )}
                 </Swiper>
-                <button onClick={handleNext} className="text-7xl">
+                <button
+                  onClick={handleNext}
+                  className="text-7xl xl:text-5xl hover:text-mainOrange"
+                >
                   <MdArrowForwardIos />
                 </button>
               </div>
@@ -96,7 +115,11 @@ const Projects: React.FC<{
             </div>
           </div>
         </GsapAnimation>
-        <SectionButton scrollTo={scrollTo} goToSectionRef={goToSectionRef} />
+        <SectionButton
+          scrollTo={scrollTo}
+          goToSectionRef={goToSectionDownRef}
+          direction="down"
+        />
       </div>
     </div>
   );
