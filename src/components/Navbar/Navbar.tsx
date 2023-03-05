@@ -23,6 +23,7 @@ const Navbar: React.FC<{
             <ul className="flex gap-10 justify-center items-center">
               {["Home", "Skills", "My work", "Resume"].map((title, index) => (
                 <li
+                  key={title}
                   className="hover:text-mainOrange flex h-full items-center cursor-pointer"
                   onClick={() => {
                     scrollTo(goToSectionRefArray[index]);

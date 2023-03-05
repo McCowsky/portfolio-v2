@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Skills from "./views/Skills/Skills";
 import ProjectsWrapper from "./views/Projects/ProjectsWrapper";
 import Resume from "./views/Resume/Resume";
+import Contact from "./views/Contact/Contact";
 useRef;
 const App: React.FC = () => {
   const section1: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
@@ -16,6 +17,9 @@ const App: React.FC = () => {
     null
   );
   const section4: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
+    null
+  );
+  const section5: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
     null
   );
   function scrollTo(section: MutableRefObject<HTMLDivElement>) {
@@ -53,6 +57,13 @@ const App: React.FC = () => {
             scrollTo={scrollTo}
             goToSectionDownRef={section1}
             goToSectionUpRef={section3}
+          />
+        </div>
+        <div ref={section5}>
+          <Contact
+            scrollTo={scrollTo}
+            goToSectionDownRef={section1}
+            goToSectionUpRef={section4}
           />
         </div>
       </div>
