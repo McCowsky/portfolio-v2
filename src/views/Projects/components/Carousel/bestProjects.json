@@ -1,0 +1,51 @@
+{
+  "bestProjects": [
+    {
+      "name": "Trello-clone-v2",
+      "img": "https://i.imgur.com/Wqikuz3.png",
+      "languages": ["React", "TypeScipt", "TailwindCSS"]
+    },
+    {
+      "name": "Quizzical",
+      "img": "https://i.imgur.com/29j8lUE.png",
+      "languages": ["React", "TypeScipt", "TailwindCSS"]
+    },
+    {
+      "name": "portfolio-v2",
+      "img": "https://i.imgur.com/LY2pbly.png",
+      "languages": ["React", "TypeScipt", "TailwindCSS"]
+    },
+    {
+      "name": "Snake",
+      "img": "https://i.imgur.com/LItHLOi.png",
+      "languages": ["TypeScipt", "HTML5", "TailwindCSS"]
+    },
+
+    {
+      "name": "Flappy",
+      "img": "https://i.imgur.com/wPYAag2.png",
+      "languages": ["TypeScipt", "HTML5", "Sass"]
+    },
+
+    {
+      "name": "Todos",
+      "img": "https://i.imgur.com/yTCw2B0.png",
+      "languages": ["TypeScipt", "HTML5", "TailwindCSS"]
+    },
+    {
+      "name": "Minima",
+      "img": "https://i.imgur.com/CHDy4ST.png",
+      "languages": ["TypeScipt", "HTML5", "TailwindCSS"]
+    },
+    {
+      "name": "GD.",
+      "img": "https://i.imgur.com/tFHcpjM.png",
+      "languages": ["TypeScipt", "HTML5", "TailwindCSS"]
+    },
+    {
+      "name": "user-auth",
+      "img": "https://i.imgur.com/CVKCgtu.png",
+      "languages": ["React", "TypeScipt", "Material UI"]
+    }
+  ]
+}

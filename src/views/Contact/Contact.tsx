@@ -1,136 +1,41 @@
-import { MutableRefObject, useRef } from "react";
-import GsapAnimation from "../../components/GsapAnimation/GsapAnimation";
-import SectionButton from "../../components/SectionButton/SectionButton";
-import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler } from "react-hook-form/dist/types";
-import contact from "../../assets/contact.jpg";
-const Contact: React.FC<{
-  scrollTo: (section: MutableRefObject<HTMLDivElement>) => void;
-  goToSectionDownRef: MutableRefObject<HTMLDivElement | null>;
-  goToSectionUpRef: MutableRefObject<HTMLDivElement | null>;
-}> = ({ scrollTo, goToSectionDownRef, goToSectionUpRef }) => {
-  const FormSchema = z.object({
-    name: z
-      .string()
-      .min(2, { message: "Name is required and must be have at least 2 characters" })
-      .max(25, { message: "Max length is 25 characters" }),
-    email: z
-      .string()
-      .email({ message: "Must be a valid email" })
-      .min(5, { message: "Email is required" }),
-    message: z
-      .string()
-      .min(15, { message: "Message of at least 15 characters is required" })
-      .max(200, { message: "Max length is 25 characters" }),
-  });
+import GsapAnimation from '../../components/GsapAnimation/GsapAnimation';
+import SectionButton from '../../components/SectionButton/SectionButton';
+import SocialIcon from '../../components/SocialIcons/SocialIcon';
+import { ScrollProps } from '../../features/types';
+import Form from './components/Form/Form';
 
-  type Form = z.infer<typeof FormSchema>;
-  const form = useRef<any>();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Form>({
-    resolver: zodResolver(FormSchema),
-  });
-  const handleSend: SubmitHandler<Form> = (formValues: Form) => {
-    console.log(formValues);
-
-    // emailjs
-    //   .sendForm("service_jek510y", "template_s0m2qr5", form.current, "Rt2aDe6LmdduCxAAY")
-    //   .then(
-    //     (result) => {
-    //       console.log(result.text);
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
-  };
+const Contact: React.FC<ScrollProps> = ({ scrollTo, goToSectionRefArray }) => {
   return (
-    <div className="w-full h-[calc(100vh-96px)] snap-center bg-[#0D002B] font-oswald">
-      <div className="relative h-auto w-[1920px] xl:w-[1440px] my-0 mx-auto px-10 ">
-        <SectionButton
-          scrollTo={scrollTo}
-          goToSectionRef={goToSectionUpRef}
-          direction="up"
-        />
-        <GsapAnimation wrapperElement="div">
-          <div className="flex flex-col justify-center items-center gap-20 xl:gap-10 h-[calc(100vh-96px)]">
+    <section className="w-full h-[calc(100vh-96px)] sm:h-[calc(100vh-80px)] snap-center bg-[#0D002B] dark:bg-[#F0F1F6] font-oswald">
+      <div className="relative h-auto w-[1920px] xl:w-[1440px] lg:w-[1280px] md:w-[960px] sm:w-[480px] my-0 mx-auto px-10 ">
+        <SectionButton scrollTo={scrollTo} goToSectionRef={goToSectionRefArray[3]} direction="up" />
+        <GsapAnimation >
+          <div className="flex flex-col justify-center items-center gap-20 xl:gap-10 sm:gap-6 h-[calc(100vh-96px)] sm:h-[calc(100vh-80px)]">
             <div>
-              <h3 className="uppercase text-center text-xl xl:text-base text-mainOrange">
-                My skills progress so far
-              </h3>
-              <h2 className="text-6xl xl:text-4xl text-center pt-3">Contact Me!</h2>
+              <h3 className="uppercase text-center text-xl xl:text-base text-mainOrange">I want to hear from You</h3>
+              <h2 className="text-6xl xl:text-4xl sm:text-3xl text-center pt-3 dark:text-black">Contact Me!</h2>
             </div>
-            <form
-              ref={form}
-              onSubmit={handleSubmit(handleSend)}
-              className="flex flex-col items-center gap-8 px-10 py-16 shadow-[inset_0_0_0_1000px_rgba(0,0,0,0.6)] text-lg"
-              style={{ backgroundImage: `url(${contact})` }}
-            >
-              <div className="flex flex-col justify-center items-center">
-                <input
-                  type="text"
-                  id="name"
-                  {...register("name")}
-                  className="w-96 bg-inherit border-b-[1px] focus:border-0"
-                />
-                <label htmlFor="name" className="self-start pt-4 text-sm">
-                  Your name
-                </label>
-                {errors.name && (
-                  <p className="text-sm text-red-200">{errors.name.message}</p>
-                )}
+            <div className="flex sm:flex-col justify-center items-center gap-20 sm:gap-10">
+              <Form />
+              <div className="flex flex-col sm:flex-row items-start gap-10 sm:gap-6">
+                <div className="flex justify-center items-center gap-5 sm:gap-2">
+                  <SocialIcon url="https://www.linkedin.com/in/mateusz-makowski-983735239" icon="linked" />
+                  <h4 className="text-xl sm:text-lg dark:text-black">LinkedIn</h4>
+                </div>
+                <div className="flex justify-center items-center gap-5 sm:gap-2">
+                  <SocialIcon url="https://github.com/McCowsky" icon="github" />
+                  <h4 className="text-xl sm:text-lg dark:text-black">GitHub</h4>
+                </div>
+                <div className="flex justify-center items-center gap-5 sm:gap-2">
+                  <SocialIcon url="mailto:makowskimateusz@outlook.com" icon="email" />
+                  <h4 className="text-xl sm:text-lg dark:text-black">Email</h4>
+                </div>
               </div>
-
-              <div className="flex flex-col justify-center items-center">
-                <input
-                  type="email"
-                  id="email"
-                  {...register("email")}
-                  className="w-96 bg-inherit border-b-[1px]"
-                />
-                <label htmlFor="email" className="self-start pt-4 text-sm">
-                  Your email
-                </label>
-                {errors.email && (
-                  <p className="text-sm text-red-200">{errors.email.message}</p>
-                )}
-              </div>
-
-              <div className="flex flex-col justify-center items-center">
-                <textarea
-                  id="message"
-                  {...register("message")}
-                  className="w-96 bg-inherit border-b-[1px]"
-                  rows={5}
-                ></textarea>
-                <label htmlFor="message" className="self-start pt-4 text-sm">
-                  Your message
-                </label>
-                {errors.message && (
-                  <p className="text-sm text-red-200">{errors.message.message}</p>
-                )}
-              </div>
-
-              <button type="submit" className="w-96 bg-mainOrange rounded-2xl py-1">
-                Send
-              </button>
-            </form>
+            </div>
           </div>
         </GsapAnimation>
-
-        <SectionButton
-          scrollTo={scrollTo}
-          goToSectionRef={goToSectionDownRef}
-          direction="down"
-        />
       </div>
-    </div>
+    </section>
   );
 };
 

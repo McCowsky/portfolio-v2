@@ -18,10 +18,10 @@ module.exports = {
       lg: { max: "1600px" },
       // => @media (max-width: 1023px) { ... }
 
-      md: { max: "1024px" },
+      md: { max: "1366px" },
       // => @media (max-width: 767px) { ... }
 
-      sm: { max: "600px" },
+      sm: { max: "960px" },
       // => @media (max-width: 639px) { ... }
     },
   },

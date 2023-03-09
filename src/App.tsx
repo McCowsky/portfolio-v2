@@ -1,70 +1,43 @@
-import { MutableRefObject, useRef } from "react";
-import Hero from "./views/Hero/Hero";
-import Navbar from "./components/Navbar/Navbar";
-import Skills from "./views/Skills/Skills";
-import ProjectsWrapper from "./views/Projects/ProjectsWrapper";
-import Resume from "./views/Resume/Resume";
-import Contact from "./views/Contact/Contact";
-useRef;
+import { useRef, RefObject } from 'react';
+import Hero from './views/Hero/Hero';
+import Navbar from './components/Navbar/Navbar';
+import Skills from './views/Skills/Skills';
+import ProjectsWrapper from './views/Projects/ProjectsWrapper';
+import Resume from './views/Resume/Resume';
+import Contact from './views/Contact/Contact';
+
 const App: React.FC = () => {
-  const section1: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
-    null
-  );
-  const section2: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
-    null
-  );
-  const section3: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
-    null
-  );
-  const section4: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
-    null
-  );
-  const section5: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
-    null
-  );
-  function scrollTo(section: MutableRefObject<HTMLDivElement>) {
-    section.current.scrollIntoView({ behavior: "smooth" });
-  }
+  const section1: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  const section2: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  const section3: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  const section4: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  const section5: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  const scrollTo = (section: RefObject<HTMLDivElement>): void => {
+    if (null !== section.current) section.current.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <div className="App">
-      <Navbar
-        goToSectionRefArray={[section1, section2, section3, section4]}
-        scrollTo={scrollTo}
-      />
+      <Navbar goToSectionRefArray={[section1, section2, section3, section4, section5]} scrollTo={scrollTo} />
       <div
-        className="relative top-24 overflow-y-auto overscroll-y-contain snap-y snap-mandatory h-[calc(100vh-96px)] w-full text-white dark:text-[#858591]  contain "
-        id="contain"
-      >
+        className="relative top-24 sm:top-20 overflow-y-auto overscroll-y-contain snap-y snap-mandatory h-[calc(100vh-96px)] sm:h-[calc(100vh-80px)] w-full text-white dark:text-[#858591]  contain scrollbar-hide"
+        id="contain">
         <div ref={section1}>
-          <Hero goToSectionDownRef={section2} scrollTo={scrollTo} />
+          <Hero goToSectionRefArray={[section1, section2, section3, section4, section5]} scrollTo={scrollTo} />
         </div>
         <div ref={section2}>
-          <Skills
-            goToSectionDownRef={section3}
-            goToSectionUpRef={section1}
-            scrollTo={scrollTo}
-          />
+          <Skills goToSectionRefArray={[section1, section2, section3, section4, section5]} scrollTo={scrollTo} />
         </div>
         <div ref={section3}>
           <ProjectsWrapper
-            goToSectionDownRef={section4}
-            goToSectionUpRef={section2}
+            goToSectionRefArray={[section1, section2, section3, section4, section5]}
             scrollTo={scrollTo}
           />
         </div>
         <div ref={section4}>
-          <Resume
-            scrollTo={scrollTo}
-            goToSectionDownRef={section1}
-            goToSectionUpRef={section3}
-          />
+          <Resume scrollTo={scrollTo} goToSectionRefArray={[section1, section2, section3, section4, section5]} />
         </div>
         <div ref={section5}>
-          <Contact
-            scrollTo={scrollTo}
-            goToSectionDownRef={section1}
-            goToSectionUpRef={section4}
-          />
+          <Contact scrollTo={scrollTo} goToSectionRefArray={[section1, section2, section3, section4, section5]} />
         </div>
       </div>
     </div>

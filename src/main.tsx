@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ThemeContextWrapper from "./context/ThemeContextWrapper";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

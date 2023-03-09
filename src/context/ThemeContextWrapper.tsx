@@ -4,7 +4,7 @@ import ThemeContext from "./ThemeContext";
 const ThemeContextWrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<string>(localStorage.getItem("theme") || "light");
 
-  const changeCurrentTheme = (newTheme: "light" | "dark") => {
+  const changeCurrentTheme = (newTheme: "light" | "dark"): void => {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   };
