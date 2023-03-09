@@ -17,7 +17,7 @@ const SectionButton: React.FC<{
     );
   }
   return (
-    <div className="absolute top-13 xl:top-8 left-1/2 -translate-x-1/2  z-50">
+    <div className="absolute top-12 xl:top-8 left-1/2 -translate-x-1/2  z-50">
       <SlArrowUpCircle
         className="text-6xl xl:text-4xl hover:text-mainOrange cursor-pointer animate-bounce dark:text-black dark:hover:text-mainOrange"
         onClick={() => scrollTo(goToSectionRef)}
