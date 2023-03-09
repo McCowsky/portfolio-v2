@@ -47,7 +47,7 @@ const Form: React.FC = () => {
             id="name"
             placeholder="Your name"
             {...register('name')}
-            className="w-52 sm:w-44 placeholder:text-sm bg-[#14143A] dark:bg-white focus:border-0 rounded-lg h-10 pl-4"
+            className="w-72 xl:w-52 sm:w-44 placeholder:text-sm bg-[#14143A] dark:bg-white focus:border-0 rounded-lg h-10 pl-4"
           />
           {errors.name && <p className="text-sm text-red-200">{errors.name.message}</p>}
         </div>
@@ -57,7 +57,7 @@ const Form: React.FC = () => {
             id="email"
             placeholder="Your email"
             {...register('email')}
-            className="w-52 sm:w-44 placeholder:text-sm bg-[#14143A] dark:bg-white rounded-lg h-10 pl-4"
+            className="w-72 xl:w-52 sm:w-44 placeholder:text-sm bg-[#14143A] dark:bg-white rounded-lg h-10 pl-4"
           />
           {errors.email && <p className="text-sm text-red-200">{errors.email.message}</p>}
         </div>
@@ -67,7 +67,7 @@ const Form: React.FC = () => {
           id="message"
           placeholder="Your message"
           {...register('message')}
-          className="w-[440px] sm:w-[380px] placeholder:text-sm bg-[#14143A] dark:bg-white resize-none rounded-lg pl-4 pt-2"
+          className="h-[250px] w-[600px] xl:w-[440px] sm:w-[380px] placeholder:text-sm bg-[#14143A] dark:bg-white resize-none rounded-lg pl-4 pt-2"
           rows={6}></textarea>
         {errors.message && <p className="text-sm text-red-200">{errors.message.message}</p>}
       </div>
